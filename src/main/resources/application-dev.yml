@@ -1,12 +1,17 @@
 # 开发环境配置
 server:
-  port: 8881
+  port: 8882
   context-path: /xs-boot
 # 数据源配置，请修改为你项目的实际配置
 spring:
+  mvc:
+    view:
+      prefix: classpath:/templates/
+      suffix: .html
+
   datasource:
     #url: jdbc:mysql://172.17.0.2:3306/zksdb
-    url: jdbc:mysql://101.132.189.9:3306/zksdb
+    url: jdbc:mysql://101.132.189.9:3306/zksdb?useUnicode=true&characterEncoding=UTF8
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
@@ -29,5 +34,6 @@ mybatis:
 
 swagger2:
   enable: true
+
 
 #spring.datasource.driverClassNamee = com.microsoft.sqlserver.jdbc.SQLServerDriver

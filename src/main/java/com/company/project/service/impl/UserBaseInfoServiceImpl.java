@@ -4,6 +4,7 @@ import com.company.project.dao.UserBaseInfoMapper;
 import com.company.project.model.UserBaseInfo;
 import com.company.project.service.UserBaseInfoService;
 import com.company.project.core.AbstractService;
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -20,28 +21,15 @@ public class UserBaseInfoServiceImpl extends AbstractService<UserBaseInfo> imple
     @Resource
     private UserBaseInfoMapper userBaseInfoMapper;
 
-    //@Transactional(propagation = Propagation.REQUIRED,rollbackFor = RuntimeException.class)
-    //@Transactional(propagation=Propagation.REQUIRES_NEW,rollbackFor = RuntimeException.class)
-    //@Transactional(propagation=Propagation.MANDATORY,rollbackFor = RuntimeException.class)
-    //@Transactional(propagation=Propagation.NESTED,rollbackFor = RuntimeException.class)
-    //@Transactional(propagation=Propagation.NEVER,rollbackFor = RuntimeException.class)
-    //@Transactional(propagation=Propagation.NOT_SUPPORTED,rollbackFor = RuntimeException.class)
-    //@Transactional(propagation=Propagation.SUPPORTS,rollbackFor = RuntimeException.class)
     @Override
+    @Delete("delete * from user_info")
     public void save(UserBaseInfo userBaseInfo) {
-        mapper.insertSelective(userBaseInfo);
+        userBaseInfoMapper.insert(userBaseInfo);
     }
 
     @Override
-    //@Transactional(propagation = Propagation.REQUIRED,rollbackFor = RuntimeException.class)
-    //@Transactional(propagation=Propagation.REQUIRES_NEW,rollbackFor = RuntimeException.class)
-    //@Transactional(propagation=Propagation.MANDATORY,rollbackFor = RuntimeException.class)
-    //@Transactional(propagation=Propagation.NESTED,rollbackFor = RuntimeException.class)
-    //@Transactional(propagation=Propagation.NEVER,rollbackFor = RuntimeException.class)
-    //@Transactional(propagation=Propagation.NOT_SUPPORTED,rollbackFor = RuntimeException.class)
-    //@Transactional(propagation=Propagation.SUPPORTS,rollbackFor = RuntimeException.class)
     public void update(UserBaseInfo userBaseInfo) {
-        mapper.updateByPrimaryKeySelective(userBaseInfo);
+        userBaseInfoMapper.updateByPrimaryKeySelective(userBaseInfo);
     }
 
 }
