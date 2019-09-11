@@ -9,7 +9,7 @@ public class TestMain {
         //AnimalProxy proxyRole=new AnimalProxy(dog);
         Animal animal = (Animal) new AnimalProxyInvocation().getInstance(dog);
         //代替执行.
-        //animal.run();
+        animal.run();
 
         Car car = (Car) new CarProxy(new Car()).getProxyInstance();
         car.run();

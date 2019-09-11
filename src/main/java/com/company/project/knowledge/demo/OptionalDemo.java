@@ -1,5 +1,8 @@
 package com.company.project.knowledge.demo;
 
+import com.google.common.collect.Lists;
+
+import java.util.ArrayList;
 import java.util.Optional;
 
 /**
@@ -16,14 +19,16 @@ public class OptionalDemo {
         Student student = new Student();
         student.setClassName(className);
         School school = new School();
-        school.setStudent(student);
+        //school.setStudent(student);
         /*Optional.of(school)
                 .map(School::getStudent)
                 .map(Student::getClassName)
                 .map(ClassName::getName)
                 .ifPresent(System.out::println);*/
         //System.out.println(school.getStudent().getClassName());
-        Optional<School> school1 = Optional.ofNullable(school);
+        Optional<ArrayList<Object>> objects = Optional.ofNullable(Lists.newArrayList());
+        //System.out.println(school1.map(school2 -> school2.getStudent()).map(student1 -> student1.getClassName()).map(className1 -> className1.getName()).orElse("1"));
+
         //school1.ifPresent(System.out::println);
         //System.out.println(Optional.of(school).isPresent());
         //System.out.println(Optional.ofNullable(school).isPresent());

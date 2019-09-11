@@ -21,13 +21,13 @@ public class StreamDemo {
         //stream filter 对数据进行过滤
         //List<Person> collect = personList.stream().filter(person -> "中国".equals(person.getCountry())).collect(Collectors.toList());
         //List<String> collect = personList.stream().map(person -> person.getName()).collect(Collectors.toList());
-        String jsonString = JSON.toJSONString(collect);
+       /* String jsonString = JSON.toJSONString(collect);
         System.out.println(jsonString);
         String s = "926";
         String[] split = s.split(",");
         System.out.println(split.length);
         String s1 = "0033TH20190327SQ3Q";
-        int index = Integer.parseInt(s1.substring(14))+1;
+        int index = Integer.parseInt(s1.substring(14))+1;*/
     }
 
     public static List<Person> init(){

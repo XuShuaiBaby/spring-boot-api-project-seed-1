@@ -1,6 +1,8 @@
 package com.company.project.knowledge.base;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class JiSuan {
 
@@ -27,15 +29,12 @@ public class JiSuan {
     public static BigDecimal tempE = new BigDecimal(1).add(R1);*/
 
     public static void main(String[] args) {
-        /*P1 = (P0.add((tempA.multiply(d2).divide(tempB).multiply(tempE)).add(tempC))).divide(tempD);
-
-        P1 = (P0.add((tempA.multiply(d).divide(tempB).multiply(tempE)).add(tempC))).divide(tempD);
-
-        P1 = (P0.add(tempA.multiply(d2).divide(new BigDecimal(360).multiply(i2).multiply(tempE))).add(tempC)).divide(tempD);*/
-        BigDecimal a = new BigDecimal(2);
-        BigDecimal b = new BigDecimal(4);
-        BigDecimal c = new BigDecimal(3);
-        System.out.println(a.add(b).divide(c));
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            simpleDateFormat.parse("1970-01-01 23:23:23");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     /*BigDecimal A = price.add(price.multiply(new BigDecimal(1).subtract(bailAmountRate)).multiply(new BigDecimal(days)).multiply(capitalRate.add(rate)).divide(new BigDecimal(360),8, BigDecimal.ROUND_HALF_UP)).multiply(new BigDecimal(1).add(vat));
