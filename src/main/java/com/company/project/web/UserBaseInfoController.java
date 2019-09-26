@@ -3,11 +3,13 @@ import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
 import com.company.project.core.ResultList;
 import com.company.project.model.UserBaseInfo;
+import com.company.project.service.ThreadDemoService;
 import com.company.project.service.UserBaseInfoService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -22,6 +24,9 @@ import java.util.List;
 public class UserBaseInfoController {
     @Resource
     private UserBaseInfoService userBaseInfoService;
+
+    @Autowired
+    private ThreadDemoService threadDemoService;
 
     @PostMapping("/add")
     public Result add(UserBaseInfo userBaseInfo) {
@@ -54,5 +59,12 @@ public class UserBaseInfoController {
         List<UserBaseInfo> list = userBaseInfoService.findAll();
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(ResultList.genResultList(pageInfo));
+    }
+
+    @ApiOperation(value = "线程测试接口")
+    @GetMapping("/test/thread")
+    public Result testThread() {
+        threadDemoService.strat();
+        return ResultGenerator.genSuccessResult();
     }
 }

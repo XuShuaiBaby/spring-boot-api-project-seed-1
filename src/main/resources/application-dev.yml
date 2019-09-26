@@ -9,6 +9,11 @@ spring:
       prefix: classpath:/templates/
       suffix: .html
 
+  http:
+    multipart:
+      max-file-size: 10Mb
+      max-request-size: 100Mb
+
   datasource:
     #url: jdbc:mysql://172.17.0.2:3306/zksdb
     url: jdbc:mysql://101.132.189.9:3306/zksdb?useUnicode=true&characterEncoding=UTF8
