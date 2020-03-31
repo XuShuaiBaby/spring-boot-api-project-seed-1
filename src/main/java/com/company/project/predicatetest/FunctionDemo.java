@@ -30,9 +30,9 @@ public class FunctionDemo {
         Function<Integer, Integer> h = f.andThen(g);//类似数学里的g(f(x))把f函数的结果作为g函数的参数
         Function<Integer, Integer> i = f.compose(g);//类似数学里的f(g(x))把g函数的结果作为f函数的参数
         int result = h.apply(3);
-        System.out.println(result);
+        //System.out.println(result);
         int result1 = i.apply(2);
-        System.out.println(result1);
+        //System.out.println(result1);
 
     }
 

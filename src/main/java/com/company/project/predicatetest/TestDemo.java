@@ -27,7 +27,7 @@ public class TestDemo {
         System.out.println(list);
         String[] keys = {"age","sex"};
 
-        list.stream().forEach(stringStringMap -> { for (int i = 0; i <keys.length ; i++) { stringStringMap.remove(keys[i]); } });
+        list.forEach(stringStringMap -> { for (int i = 0; i <keys.length ; i++) { stringStringMap.remove(keys[i]); } });
         System.out.println(list);
 
     }

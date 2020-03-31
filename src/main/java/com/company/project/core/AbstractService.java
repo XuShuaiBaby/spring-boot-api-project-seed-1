@@ -63,7 +63,7 @@ public abstract class AbstractService<T> implements Service<T> {
             field.set(model, value);
             return mapper.selectOne(model);
         } catch (ReflectiveOperationException e) {
-            throw new ServiceException(e.getMessage(), e);
+            throw new ServiceException(ResultCode.FAIL,e.getMessage(), e);
         }
     }
 

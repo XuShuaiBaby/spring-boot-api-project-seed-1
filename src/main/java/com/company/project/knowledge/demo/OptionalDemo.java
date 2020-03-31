@@ -2,7 +2,13 @@ package com.company.project.knowledge.demo;
 
 import com.google.common.collect.Lists;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Optional;
 
 /**
@@ -19,6 +25,7 @@ public class OptionalDemo {
         Student student = new Student();
         student.setClassName(className);
         School school = new School();
+        OptionalSchool optionalSchool = new OptionalSchool();
         //school.setStudent(student);
         /*Optional.of(school)
                 .map(School::getStudent)
@@ -26,17 +33,28 @@ public class OptionalDemo {
                 .map(ClassName::getName)
                 .ifPresent(System.out::println);*/
         //System.out.println(school.getStudent().getClassName());
-        Optional<ArrayList<Object>> objects = Optional.ofNullable(Lists.newArrayList());
+        //if (test(school)) return;
+        //Optional<ArrayList<Object>> objects = Optional.ofNullable(Lists.newArrayList());
         //System.out.println(school1.map(school2 -> school2.getStudent()).map(student1 -> student1.getClassName()).map(className1 -> className1.getName()).orElse("1"));
 
         //school1.ifPresent(System.out::println);
         //System.out.println(Optional.of(school).isPresent());
         //System.out.println(Optional.ofNullable(school).isPresent());
-        if (!Optional.ofNullable(school).map(School::getStudent).map(Student::getClassName).map(ClassName::getName).isPresent()){
+        //System.out.println(Optional.of(school).map(School::getStudent).map(Student::getClassName).map(ClassName::getName).orElse("二班"));
+        System.out.println(LocalDateTime.of(LocalDate.now(),LocalTime.MIN).with(TemporalAdjusters.firstDayOfMonth()));
+        System.out.println(LocalDateTime.of(LocalDate.now(),LocalTime.MAX).with(TemporalAdjusters.firstDayOfMonth()).plusDays(4));
+        if (!Optional.of(school).map(School::getStudent).map(Student::getClassName).map(ClassName::getName).isPresent()){
             System.out.println("空对象:"+school);
         }else {
             System.out.println("对象:"+school.getStudent().getClassName().getName());
         }
+    }
+
+    private static boolean test(School school) {
+        if(school.getStudent() == null){
+            return true;
+        }
+        return false;
     }
 }
 
@@ -59,6 +77,25 @@ class School{
     }
 }
 
+class OptionalSchool{
+    private Optional<OptionalStudent> student;
+
+    public Optional<OptionalStudent> getStudent() {
+        return student;
+    }
+
+    public void setStudent(Optional<OptionalStudent> student) {
+        this.student = student;
+    }
+
+    @Override
+    public String toString() {
+        return "OptionalSchool{" +
+            "student=" + student +
+            '}';
+    }
+}
+
 class Student{
     private ClassName className;
 
@@ -75,6 +112,25 @@ class Student{
         return "Student{" +
                 "className=" + className +
                 '}';
+    }
+}
+
+class OptionalStudent{
+    private Optional<ClassName> className;
+
+    public Optional<ClassName> getClassName() {
+        return className;
+    }
+
+    public void setClassName(Optional<ClassName> className) {
+        this.className = className;
+    }
+
+    @Override
+    public String toString() {
+        return "optionalStudent{" +
+            "className=" + className +
+            '}';
     }
 }
 

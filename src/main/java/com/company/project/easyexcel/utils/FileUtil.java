@@ -5,6 +5,7 @@ import cn.afterturn.easypoi.excel.ExcelImportUtil;
 import cn.afterturn.easypoi.excel.entity.ExportParams;
 import cn.afterturn.easypoi.excel.entity.ImportParams;
 import cn.afterturn.easypoi.excel.entity.enmus.ExcelType;
+import com.company.project.core.ResultCode;
 import com.company.project.core.ServiceException;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -95,7 +96,7 @@ public class FileUtil {
 			list = ExcelImportUtil.importExcel(file.getInputStream(), pojoClass, params);
 		} catch (NoSuchElementException e) {
 			//throw new Exception("excel文件不能为空");
-			throw new ServiceException("excel文件不能为空");
+			throw new ServiceException(ResultCode.FAIL,"excel文件不能为空");
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}
