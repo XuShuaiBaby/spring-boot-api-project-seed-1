@@ -3,6 +3,7 @@ package com.company.project.knowledge.base;
 import java.util.*;
 
 public class BullsAndCows {
+    //每次递推获取新数字的下标
     private static int first = 0;
     private static int last = 4;
     public static void main(String[] args) {
