@@ -11,7 +11,9 @@ public class BullsAndCows {
         int[] answerChars = randomNum();
         //存放计算结果
         Set<Number> trueNumber = new HashSet<>();
+        long startTime = System.currentTimeMillis();
         calculate(trueNumber,answerChars);
+        System.out.println("耗时"+(System.currentTimeMillis()-startTime)+"ms");
     }
 
     public static void calculate(Set<Number> trueNumber,int[] answerChars) {
