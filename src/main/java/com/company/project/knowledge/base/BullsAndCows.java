@@ -9,46 +9,50 @@ public class BullsAndCows {
     public static void main(String[] args) {
         //随机生成的答案
         int[] answerChars = randomNum();
+        //存放计算结果
+        Set<Number> trueNumber = new HashSet<>();
+        calculate(trueNumber,answerChars);
+    }
+
+    public static void calculate(Set<Number> trueNumber,int[] answerChars) {
         // A的个数，B的个数
         int a = 0;
         int b = 0;
         //限定游戏次数
         int count = 8;
-        Set<Number> trueNumber = new HashSet<>();
         boolean sucess = true;
-        while (sucess){
+        while (sucess) {
             System.out.println("请输入你猜的数据");
-            int [] numberChars = groupNextNumber(trueNumber);
+            int[] numberChars = groupNextNumber(trueNumber);
             System.out.println(Arrays.toString(numberChars));
             for (int i = 0; i < answerChars.length; i++) {
                 for (int j = 0; j < numberChars.length; j++) {
-                    if (i == j){
-                        if (answerChars[i] == numberChars[j]){
-                            trueNumber.add(new Number(i,answerChars[i]));
+                    if (i == j) {
+                        if (answerChars[i] == numberChars[j]) {
+                            trueNumber.add(new Number(i, answerChars[i]));
                             a++;
                         }
-                    }else{
-                        if (answerChars[i] == numberChars[j]){
-                            trueNumber.add(new Number(i,answerChars[i]));
+                    } else {
+                        if (answerChars[i] == numberChars[j]) {
+                            trueNumber.add(new Number(i, answerChars[i]));
                             b++;
                         }
                     }
                 }
             }
-            System.out.println(a+"A"+b+"B");
-            System.out.println("还剩"+--count+"次");
-            if (count == 0){
+            System.out.println(a + "A" + b + "B");
+            System.out.println("还剩" + --count + "次");
+            if (count == 0) {
                 sucess = false;
                 System.out.println("次数用完，游戏结束");
             }
-            if (a == 4 && b == 0){
+            if (a == 4 && b == 0) {
                 sucess = false;
-                System.out.println("回答正常，答案是"+Arrays.toString(answerChars));
+                System.out.println("回答正常，答案是" + Arrays.toString(answerChars));
             }
             a = 0;
             b = 0;
         }
-
     }
 
     public static int[] groupNextNumber(Set<Number> trueNumber){
